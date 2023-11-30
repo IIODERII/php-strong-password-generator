@@ -29,17 +29,13 @@ function generatePassword()
             $valoriDisponibili = $symbols;
         }
 
-        if (!$_GET['repeat']) {
-            while (strlen($newPassword) < $passwordLength) {
-                $newCharacter = $valoriDisponibili[rand(0, strlen($valoriDisponibili) - 1)];
-                if (!strpos($newPassword, $newCharacter)) {
+        while (strlen($newPassword) < $passwordLength) {
+            $newCharacter = $valoriDisponibili[rand(0, strlen($valoriDisponibili) - 1)];
+            if (!$_GET['repeat']) {
+                if (!str_contains($newPassword, $newCharacter)) {
                     $newPassword .= $newCharacter;
                 }
-            }
-        } else {
-            while (strlen($newPassword) < $passwordLength) {
-                $newCharacter = $valoriDisponibili[rand(0, strlen($valoriDisponibili) - 1)];
-
+            } else {
                 $newPassword .= $newCharacter;
             }
         }
