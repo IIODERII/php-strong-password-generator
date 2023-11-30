@@ -21,9 +21,12 @@ session_start();
             <h1 class='text-secondary'>Strong Password Generator</h1>
             <h2 class='text-white'>Genera una password sicura</h2>
         </div>
-        <h2>La tua Password è
-            <?php echo $_SESSION['password']; ?>
-        </h2>
+        <div class="alert alert-success text-center">
+            <h2>La tua Password è <br>
+                <?php echo $_SESSION['password']; ?>
+            </h2>
+        </div>
+        <a href="index.php" class='btn btn-success'>Genera un'altra Password</a>
     </main>
 </body>
 
