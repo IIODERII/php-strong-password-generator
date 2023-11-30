@@ -28,16 +28,22 @@ function generatePassword()
         } elseif (in_array('sym', $_GET['symbols'])) {
             $valoriDisponibili = $symbols;
         }
-        while (strlen($newPassword) < $passwordLength) {
-            $newCharacter = $valoriDisponibili[rand(0, strlen($valoriDisponibili) - 1)];
-            if (!$_GET['repeat']) {
+
+        if (!$_GET['repeat']) {
+            while (strlen($newPassword) < $passwordLength) {
+                $newCharacter = $valoriDisponibili[rand(0, strlen($valoriDisponibili) - 1)];
                 if (!strpos($newPassword, $newCharacter)) {
                     $newPassword .= $newCharacter;
                 }
-            } else {
+            }
+        } else {
+            while (strlen($newPassword) < $passwordLength) {
+                $newCharacter = $valoriDisponibili[rand(0, strlen($valoriDisponibili) - 1)];
+
                 $newPassword .= $newCharacter;
             }
         }
+
 
         //var_dump($newPassword);
         $_SESSION['password'] = $newPassword;
